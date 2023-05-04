@@ -26,7 +26,7 @@ class HomePage extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: const [
                       Icon(Icons.location_on),
-                      Text("Dove mi trovo?"),
+                      Text("Dove mi trovo?", style: TextStyle(fontSize: 18)),
                     ],
                   ),
                 ),
@@ -44,7 +44,7 @@ class HomePage extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: const [
                       Icon(Icons.library_books),
-                      Text("Dati anagrafici"),
+                      Text("Dati anagrafici", style: TextStyle(fontSize: 18)),
                     ],
                   ),
                 )
@@ -53,9 +53,12 @@ class HomePage extends StatelessWidget {
           ),
           Wrap(
             children: [
-              _container(context, Icons.contact_page, "Come contattarmi"),
-              _container(context, Icons.person_outline_outlined, "Presentazione"),
-              _container(context, Icons.integration_instructions, "Istruzione e formazione")
+              GestureDetector(child: _container(context, Icons.contact_page, "Come contattarmi"), onTap: () => {}),
+              GestureDetector(child:_container(context, Icons.person_outline_outlined, "Presentazione"), onTap: () => {}),
+              GestureDetector(child:_container(context, Icons.integration_instructions, "Istruzione e formazione"), onTap: () => {}),
+              GestureDetector(child:_container(context, Icons.cases_outlined, "Esperienza lavorativa"), onTap: () => {}),
+              GestureDetector(child:_container(context, Icons.computer, "Competenze digitali e linguistiche"), onTap: () => {}),
+              GestureDetector(child:_container(context, Icons.credit_card, "Patente di guida"), onTap: () => {}),
             ],
           )
         ],
