@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 import '../provider/user_provider.dart';
+import '../utilities/constants.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -73,7 +75,7 @@ class _HomePageState extends State<HomePage> {
           ),
           Wrap(
             children: [
-              GestureDetector(child: _container(context, Icons.contact_page, "Come contattarmi"), onTap: () => {}),
+              GestureDetector(child: _container(context, Icons.contact_page, "Come contattarmi"), onTap: () => { context.goNamed(CONTACTME) }),
               GestureDetector(child:_container(context, Icons.person_outline_outlined, "Presentazione"), onTap: () => {}),
               GestureDetector(child:_container(context, Icons.integration_instructions, "Istruzione e formazione"), onTap: () => {}),
               GestureDetector(child:_container(context, Icons.cases_outlined, "Esperienza lavorativa"), onTap: () => {}),
