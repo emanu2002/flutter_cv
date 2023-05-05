@@ -1,5 +1,25 @@
 import 'package:flutter/material.dart';
-class HomePage extends StatelessWidget {
+import 'package:provider/provider.dart';
+import '../provider/user_provider.dart';
+
+class HomePage extends StatefulWidget {
+  const HomePage({super.key});
+
+  @override
+  _HomePageState createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  late UserProvider userProvider;
+
+  void initState(){
+    userProvider = Provider.of<UserProvider>(context, listen: false);
+    userProvider.initState();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      userProvider.addListener(() { if (mounted) setState(() {}); });
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -39,7 +59,7 @@ class HomePage extends StatelessWidget {
                   ),
                 ),
                 GestureDetector(
-                  onTap: ()=> print('Dati anagrafici'),
+                  onTap: ()=> _anagraphicaData(context,"Dati anagrafici"),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: const [
@@ -58,7 +78,7 @@ class HomePage extends StatelessWidget {
               GestureDetector(child:_container(context, Icons.integration_instructions, "Istruzione e formazione"), onTap: () => {}),
               GestureDetector(child:_container(context, Icons.cases_outlined, "Esperienza lavorativa"), onTap: () => {}),
               GestureDetector(child:_container(context, Icons.computer, "Competenze digitali e linguistiche"), onTap: () => {}),
-              GestureDetector(child:_container(context, Icons.credit_card, "Patente di guida"), onTap: () => {}),
+              GestureDetector(child:_container(context, Icons.credit_card, "Patente di guida"), onTap: () => { _card(context,"Patenti")}),
             ],
           )
         ],
@@ -83,6 +103,98 @@ class HomePage extends StatelessWidget {
           Text(text,textAlign: TextAlign.center, style: const TextStyle(fontSize: 25))
         ],
       ),
+    );
+  }
+
+  Future<void> _anagraphicaData(BuildContext context,String title){
+     return showDialog<void>(
+         context: context,
+         builder: (BuildContext context) {
+          return AlertDialog(
+            title: Text(title),
+            content: Container(
+              width: 50,
+              height: 50,
+              child: Column(
+                children: [
+                  Row(
+                    children: [
+                      const Text("Nazionalità: ", style: TextStyle(fontWeight: FontWeight.bold)),
+                      Text(userProvider.usr!.nazionalita!),
+                    ],
+                  ),
+                  const SizedBox(height: 5),
+                  Row(
+                    children: [
+                      const Text("Data di nascita: ", style: TextStyle(fontWeight: FontWeight.bold)),
+                      Text(userProvider.usr!.dataNascita!),
+                    ],
+                  ),
+                ],
+              ),
+            ),
+            actions: [
+              TextButton(
+                style: TextButton.styleFrom(
+                  textStyle: Theme.of(context).textTheme.labelLarge,
+                ),
+                child: const Text('OK'),
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+              ),
+            ],
+          );
+         }
+     );
+  }
+
+  Future<void> _card(BuildContext context,String title){
+    return showDialog<void>(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            title: Text(title),
+            content: Container(
+              width: 50,
+              height: 90,
+              child: Row(
+                children: [
+                  Column(
+                    children: const [
+                      Icon(
+                        Icons.directions_car_sharp,
+                        size: 50,
+                      ),
+                      Text("B", style: TextStyle(fontWeight: FontWeight.bold,fontSize: 25))
+                    ],
+                  ),
+                  const SizedBox(width: 10),
+                  Column(
+                    children: const [
+                      Icon(
+                        Icons.motorcycle,
+                        size: 50,
+                      ),
+                      Text("A1", style: TextStyle(fontWeight: FontWeight.bold,fontSize: 25))
+                    ],
+                  )
+                ],
+              ),
+            ),
+            actions: [
+              TextButton(
+                style: TextButton.styleFrom(
+                  textStyle: Theme.of(context).textTheme.labelLarge,
+                ),
+                child: const Text('OK'),
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+              ),
+            ],
+          );
+        }
     );
   }
 }
