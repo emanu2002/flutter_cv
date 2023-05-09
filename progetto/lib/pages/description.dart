@@ -30,7 +30,7 @@ class _DescriptionPageState extends State<DescriptionPage>{
         padding: const EdgeInsets.all(8.0),
         child: ListView(
           children: [
-            Text(userProvider.usr!.description! , style: TextStyle(color: Colors.black, fontSize: 18)),
+            Text(userProvider.usr!.description , style: TextStyle(color: Colors.black, fontSize: 18)),
           ],
         ),
       ),
