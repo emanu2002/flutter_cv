@@ -76,7 +76,7 @@ class _HomePageState extends State<HomePage> {
           Wrap(
             children: [
               GestureDetector(child: _container(context, Icons.contact_page, "Come contattarmi"), onTap: () => { context.goNamed(CONTACTME) }),
-              GestureDetector(child:_container(context, Icons.person_outline_outlined, "Presentazione"), onTap: () => {}),
+              GestureDetector(child:_container(context, Icons.person_outline_outlined, "Presentazione"), onTap: () => {context.goNamed(DESCRIPTION)}),
               GestureDetector(child:_container(context, Icons.integration_instructions, "Istruzione e formazione"), onTap: () => {}),
               GestureDetector(child:_container(context, Icons.cases_outlined, "Esperienza lavorativa"), onTap: () => {}),
               GestureDetector(child:_container(context, Icons.computer, "Competenze digitali e linguistiche"), onTap: () => {}),
