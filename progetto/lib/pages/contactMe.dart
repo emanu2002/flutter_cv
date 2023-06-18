@@ -1,5 +1,8 @@
+import 'dart:html';
+
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:url_launcher/url_launcher.dart';
 import '../provider/user_provider.dart';
 
 class ContactMePage extends StatefulWidget {
@@ -27,31 +30,66 @@ class _ContactMeState extends State<ContactMePage> {
         title: const Text("COME CONTATTARMI"),
         centerTitle: true,
       ),
-      body:Column(
+      backgroundColor: Colors.white,
+      body:ListView(
         children:[
-          _line(context,Icons.mail, "emanuelecarlucci528@gmail.com"),
-          _line(context,Icons.phone, "3249033672"),
-          _line(context,Icons.link, "https://www.linkedin.com/in/emanuele-carlucci-ab4a621bb/"),
-          _line(context,Icons.question_answer_rounded, "emanuele.carlucci"),
+          GestureDetector(
+              child: Image.asset('assets/images/linkedin.png',width: 100,height: 100,),
+              onTap: ()=>{_launchURL("https://www.linkedin.com/in/emanuele-carlucci-ab4a621bb/")},
+          ),
+          const SizedBox(height: 10),
+          GestureDetector(
+              child: Image.asset('assets/images/gmail.jpg',width: 100,height: 100,),
+              onTap: ()=>{
+                _sendMail("emanuelecarlucci528@gmail.com")
+              }
+          ),
+          const SizedBox(height: 15),
+          GestureDetector(
+              child: Image.asset('assets/images/instagram.jpg',width: 100,height: 100,),
+              onTap:()=>{
+                _instagram("emanuele.carlucci")
+              }
+          ),
+          const SizedBox(height: 20),
+          GestureDetector(
+            child: Image.asset('assets/images/phone.png',width: 70,height: 70,),
+            onTap:()=>{
+              _call("tel://3249033672")
+            }
+          ),
         ]
       ),
     );
   }
 
-  Widget _line(BuildContext context, IconData icon, String reference){
-    return Container(
-      width: MediaQuery.of(context).size.width * 0.99,
-      child: Row(
-        children: [
-          Icon(icon),
-          TextButton(
-            onPressed: ()=>{
+  _launchURL(String link) async {
+    final Uri url = Uri.parse(link);
+    if (!await launchUrl(url)) {
+      throw Exception('Could not launch ');
+    }
+  }
 
-            },
-            child: Text(reference,overflow: TextOverflow.visible,)
-          )
-        ],
-      ),
-    );
+  _sendMail(String mail) async {
+    // Android and iOS
+    Uri url =  Uri.parse('mailto:'+mail);
+    if (!await launchUrl(url)) {
+      throw Exception('Could not launch ');
+    }
+  }
+
+  _call(String number) async{
+    final Uri url = Uri.parse(number);
+    if (!await launchUrl(url)) {
+    throw Exception('Could not launch ');
+    }
+  }
+
+  _instagram(String insta) async {
+    // Android and iOS
+    Uri url =  Uri.parse('https://www.instagram.com/'+insta+"/");
+    if (!await launchUrl(url)) {
+      throw Exception('Could not launch ');
+    }
   }
 }

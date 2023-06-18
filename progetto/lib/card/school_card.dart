@@ -15,14 +15,15 @@ class _schoolCardState extends State<schoolCard>{
   Widget build(BuildContext context) {
     return Card(
       child: Padding(
-        padding: const EdgeInsets.all(8.0),
+        padding: const EdgeInsets.all(5.0),
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            _row("${widget.school.initYear}-${widget.school.endYear}  ${widget.school.city.name} ${widget.school.city.nationality}"),
+            _row("${widget.school.initYear}-${widget.school.endYear}  ${widget.school.city.name} ${widget.school.city.nationality}",true),
             const SizedBox(height: 5),
-            _row(widget.school.description),
+            _row(widget.school.description,false),
             const SizedBox(height: 5),
-            _row(widget.school.name),
+            _row(widget.school.name,true),
             const SizedBox(height: 5),
           ],
         ),
@@ -30,10 +31,12 @@ class _schoolCardState extends State<schoolCard>{
     );
   }
 
-  Widget _row(String text){
+  Widget _row(String text,bool bold){
     return Row(
       children: [
-        Text(text)
+        Text(text,overflow: TextOverflow.ellipsis,
+        style:  bold ? TextStyle(fontWeight: FontWeight.bold): TextStyle(fontWeight: FontWeight.normal),
+        )
       ],
     );
   }
