@@ -2,3 +2,4 @@
 const CONTACTME = 'contact-me';
 const DESCRIPTION = 'description';
 const SCHOOLANDDESCRIPTION = 'school-and-description';
+const WORKEXPERIENCE="work-experience";

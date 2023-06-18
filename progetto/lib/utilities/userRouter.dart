@@ -3,6 +3,7 @@ import 'package:go_router/go_router.dart';
 import '../pages/contactMe.dart';
 import '../pages/description.dart';
 import '../pages/educationAndTraining.dart';
+import '../pages/workExperience.dart';
 import 'constants.dart';
 
 List<GoRoute> user_router=[
@@ -20,5 +21,10 @@ List<GoRoute> user_router=[
       name: SCHOOLANDDESCRIPTION,
       path: SCHOOLANDDESCRIPTION,
       builder: (BuildContext context, GoRouterState state) => SchoolAndTrainingPage()
+  ),
+  GoRoute(
+      name: WORKEXPERIENCE,
+      path: WORKEXPERIENCE,
+      builder: (BuildContext context, GoRouterState state) => WorkExperiencePage()
   ),
 ];
