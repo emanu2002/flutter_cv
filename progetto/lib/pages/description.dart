@@ -26,13 +26,36 @@ class _DescriptionPageState extends State<DescriptionPage>{
         title: const Text("PRESENTAZIONE"),
         centerTitle: true,
       ),
-      body: Container(
-        padding: const EdgeInsets.all(8.0),
-        child: ListView(
-          children: [
-            Text(userProvider.usr!.description , style: TextStyle(color: Colors.black, fontSize: 18)),
-          ],
-        ),
+      backgroundColor: Colors.white,
+      body: ListView(
+        children: [
+          Stack(
+            children: [
+              Container(
+                height: 50,
+                margin: EdgeInsets.only(top:MediaQuery.of(context).size.height *0.02),
+                decoration: BoxDecoration(
+                    color: Colors.grey
+                ),
+              ),
+              Container(
+                  height: 50,
+                  margin: EdgeInsets.only(top: MediaQuery.of(context).size.height *0.03),
+                  decoration: BoxDecoration(
+                      color: Colors.white
+                  )
+              ),
+              Container(
+                  margin: EdgeInsets.only(top: MediaQuery.of(context).size.height *0.05, left: 15, right: 15),
+                  child: Column(
+                    children: [
+                      Text(userProvider.usr!.description , style: TextStyle(color: Colors.black, fontSize: 18)),
+                    ],
+                  ),
+              )
+            ],
+          ),
+        ],
       ),
     );
   }

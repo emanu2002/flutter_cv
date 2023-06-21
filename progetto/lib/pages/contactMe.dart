@@ -33,30 +33,118 @@ class _ContactMeState extends State<ContactMePage> {
       backgroundColor: Colors.white,
       body:ListView(
         children:[
-          GestureDetector(
-              child: Image.asset('assets/images/linkedin.png',width: 100,height: 100,),
-              onTap: ()=>{_launchURL("https://www.linkedin.com/in/emanuele-carlucci-ab4a621bb/")},
+          Container(
+            margin: EdgeInsets.only(left:100,right: 100, top:10),
+            width: MediaQuery.of(context).size.width *0.4,
+            height: 100,
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(10),
+                  topRight: Radius.circular(10),
+                  bottomLeft: Radius.circular(10),
+                  bottomRight: Radius.circular(10)
+              ),
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.grey.withOpacity(0.5),
+                  spreadRadius: 5,
+                  blurRadius: 7,
+                  offset: Offset(0, 2), // changes position of shadow
+                ),
+              ],
+            ),
+            child: GestureDetector(
+                child: Image.asset('assets/images/linkedin.png'),
+                onTap: ()=>{_launchURL("https://www.linkedin.com/in/emanuele-carlucci-ab4a621bb/")},
+            ),
           ),
-          const SizedBox(height: 10),
-          GestureDetector(
-              child: Image.asset('assets/images/gmail.jpg',width: 100,height: 100,),
-              onTap: ()=>{
-                _sendMail("emanuelecarlucci528@gmail.com")
-              }
+          const SizedBox(height: 30),
+          Container(
+            margin: EdgeInsets.only(left:100,right: 100),
+            width: MediaQuery.of(context).size.width *0.5,
+            height: 100,
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(10),
+                  topRight: Radius.circular(10),
+                  bottomLeft: Radius.circular(10),
+                  bottomRight: Radius.circular(10)
+              ),
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.grey.withOpacity(0.5),
+                  spreadRadius: 5,
+                  blurRadius: 7,
+                  offset: Offset(0, 2), // changes position of shadow
+                ),
+              ],
+            ),
+            child: GestureDetector(
+                child: Image.asset('assets/images/gmail.jpg',),
+                onTap: ()=>{
+                  _sendMail("emanuelecarlucci528@gmail.com")
+                }
+            ),
           ),
-          const SizedBox(height: 15),
-          GestureDetector(
-              child: Image.asset('assets/images/instagram.jpg',width: 100,height: 100,),
-              onTap:()=>{
-                _instagram("emanuele.carlucci")
-              }
+          const SizedBox(height: 25),
+          Container(
+            margin: EdgeInsets.only(left:100,right: 100, top:10),
+            width: MediaQuery.of(context).size.width *0.4,
+            height: 100,
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(10),
+                  topRight: Radius.circular(10),
+                  bottomLeft: Radius.circular(10),
+                  bottomRight: Radius.circular(10)
+              ),
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.grey.withOpacity(0.5),
+                  spreadRadius: 5,
+                  blurRadius: 7,
+                  offset: Offset(0, 2), // changes position of shadow
+                ),
+              ],
+            ),
+            child: GestureDetector(
+                child: Image.asset('assets/images/instagram.jpg'),
+                onTap:()=>{
+                  _instagram("emanuele.carlucci")
+                }
+            ),
           ),
           const SizedBox(height: 20),
-          GestureDetector(
-            child: Image.asset('assets/images/phone.png',width: 70,height: 70,),
-            onTap:()=>{
-              _call("tel://3249033672")
-            }
+          Container(
+            margin: EdgeInsets.only(left:100,right: 100, top:10),
+            width: MediaQuery.of(context).size.width *0.30,
+            height: 80,
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(10),
+                  topRight: Radius.circular(10),
+                  bottomLeft: Radius.circular(10),
+                  bottomRight: Radius.circular(10)
+              ),
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.grey.withOpacity(0.5),
+                  spreadRadius: 5,
+                  blurRadius: 7,
+                  offset: Offset(0, 2), // changes position of shadow
+                ),
+              ],
+            ),
+            child: GestureDetector(
+              child: Image.asset('assets/images/phone.png'),
+              onTap:()=>{
+                _call("tel://3249033672")
+              }
+            ),
           ),
         ]
       ),
