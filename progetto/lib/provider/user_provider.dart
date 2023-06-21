@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:my_cv_flutter/model/school.dart';
 import '../model/city.dart';
+import '../model/digital.dart';
 import '../model/user.dart';
 import '../model/work.dart';
 
@@ -20,16 +21,16 @@ class UserProvider extends ChangeNotifier{
     'assets/images/inglese.png'
   ];
 
-  List<String> competenceDigital=[
-    'assets/images/flutter.png',
-    'assets/images/dart.png',
-    'assets/images/java.png',
-    'assets/images/javascript.png',
-    'assets/images/vue.png',
-    'assets/images/html.png',
-    'assets/images/css.png',
-    'assets/images/git.png',
-    'assets/images/php.png',
+  List<Digital> competenceDigital=[
+    Digital(img: 'assets/images/flutter.png', description: "FLUTTER"),
+    Digital(img:'assets/images/dart.png', description: "DART"),
+    Digital(img:'assets/images/java.png', description: "JAVA"),
+    Digital(img:'assets/images/javascript.png', description: "JAVASCRIPT"),
+    Digital(img:'assets/images/vue.png', description: "VUE"),
+    Digital(img:'assets/images/html.png', description: "HTML"),
+    Digital(img:'assets/images/css.png', description: "CSS"),
+    Digital(img:'assets/images/git.png', description: "GITHUB"),
+    Digital(img:'assets/images/php.png', description: "PHP"),
   ];
 
   String descrizione = "Ho un ottima capacità di relazionarmi acquisita negli anni praticando diversi sport (calcio e piscina), in cui è importante avere un buon rapporto con il team.\nSono una persona socievole, creo subito un clima amichevole.\nHo svolto il compito di educatore con l’ACR e il Grest nel corso dell’anno 2019. \nPossiedo buone competenze organizzative sviluppate negli anni facendo il capitano in giochi di squadra (Calcio), ed anche facendo parte di molti lavori di gruppo a scuola e in università. \nDurante il periodo del covid-19 ho svolto attività di volontariato presso il mio paese negli enti associati agli aiuti delle persone.";

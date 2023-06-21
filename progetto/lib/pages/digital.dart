@@ -27,9 +27,35 @@ class _DigitalPageState extends State<DigitalPage>{
       body: ListView(
         children: [
           for(int i=0;i<userProvider.competenceDigital.length;i++)
-            CompetenceCard(competence: userProvider.competenceDigital[i])
+            GestureDetector(child: CompetenceCard(competence: userProvider.competenceDigital[i].img),onTap: ()=>{_description(context,userProvider.competenceDigital[i].description) },)
         ],
       ),
+    );
+  }
+
+  Future<void> _description(BuildContext context,String content){
+    return showDialog<void>(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            content: Container(
+              width: 50,
+              height: 50,
+              child:  Text(content)
+            ),
+            actions: [
+              TextButton(
+                style: TextButton.styleFrom(
+                  textStyle: Theme.of(context).textTheme.labelLarge,
+                ),
+                child: const Text('OK'),
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+              ),
+            ],
+          );
+        }
     );
   }
 }
