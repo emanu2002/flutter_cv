@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
+import 'package:url_launcher/url_launcher.dart';
 import '../provider/user_provider.dart';
 import '../utilities/constants.dart';
 
@@ -43,7 +44,9 @@ class _HomePageState extends State<HomePage> {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 GestureDetector(
-                  onTap: ()=> print('Dove mi trovo?'),
+                  onTap: ()=> {
+                    navigateTo(40.583333, 17.466667)
+                  },
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: const [
@@ -198,5 +201,14 @@ class _HomePageState extends State<HomePage> {
           );
         }
     );
+  }
+
+  static void navigateTo(double lat, double lng) async {
+    var uri = 'https://www.google.com/maps/search/?api=1&query=$lat,$lng';
+    print(uri);
+    Uri url =  Uri.parse(uri);
+    if (!await launchUrl(url)) {
+      throw Exception('Could not launch ');
+    }
   }
 }
